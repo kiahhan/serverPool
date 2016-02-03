@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+
+	<serving>
+		<inst bizKey="meal" cluster="ALL_MEAL_PRD" />
+		<inst bizKey="pinyin" cluster="ALL_PY_PRD" />
+	</serving>
+
+	<clusters>
+		<cluster name="ALL_MEAL_PRD" lbMethod="roundRobin" pingTimeout="3000" queryTimeout="1000" maxConnectionsPerHost="70">
+			<server>http://localhost:8001/master/mealCore/</server>
+		</cluster>
+		<cluster name="ALL_PY_PRD" lbMethod="sequential" pingTimeout="3000" queryTimeout="1000" maxConnectionsPerHost="70">
+			<server>http://localhost:8001/master/pinyin/</server>
+			<server>http://localhost:8001/master/pinyin/</server>
+		</cluster>
+
+	</clusters>
+
+</configuration>
